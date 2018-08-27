@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Leftcycle Diagram</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{ message }}
+    <div>
+      <p v-for="(item, index) in order_arr" :key="index">
+        {{ index }}. {{ item }}
+      </p>
+    </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue',
+        order_arr: [
+          '执行顺序：'
+        ]
+      },
+      beforeCreate() {
+        console.log(this.order_arr)
+        // this.order_arr.push('BeforeCreate')
+      },
+      created() {
+        this.order_arr.push('Created')
+        console.log(this.order_arr)
+      },
+      mounted() {
+        this.order_arr.push('Mounted')
+        console.log(this.order_arr)
+      },
+      beforeDestroy() {
+        console.log('这里是 BeforeDestroy')
+      },
+      destroyed() {
+        console.log('这里是 Destroyed')
+      },
+      beforeUpdate() {
+        console.log('这里是 BeforeUpdate')
+      },
+      updated() {
+        console.log('这里是 Updated')
+      },
+      activated() {
+        console.log('这里是 Activated')
+      }
+    })
+  </script>
+</body>
+
+</html>
