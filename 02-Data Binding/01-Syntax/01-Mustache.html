@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Data Binding - Mustache</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>Hello {{ name }}</p>
+    <p v-once>This ill never change: {{ msg }}</p>
+    <p>Mustache supports the full power of Javascript expressions inside all data bindings</p>
+    <p>number = 1, number + 1 = {{ number + 1 }}</p>
+    <p>right ? 'YES' : 'NO': {{ right?'YES':'NO' }}</p>
+    <p>message = {{ message }}, message.split().reverse().join('') : {{ message.split('').reverse().join('') }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'Vue',
+        msg: 'v-once',
+        number: 1,
+        right: true,
+        message: 'Hello Vue!'
+      }
+    })
+  </script>
+</body>
+
+</html>

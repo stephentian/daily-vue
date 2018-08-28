@@ -29,8 +29,8 @@
         ]
       },
       beforeCreate() {
-        console.log(this.order_arr)
         // this.order_arr.push('BeforeCreate')
+        // error : this.order is undefined
       },
       created() {
         this.order_arr.push('Created')
@@ -41,19 +41,19 @@
         console.log(this.order_arr)
       },
       beforeDestroy() {
-        console.log('这里是 BeforeDestroy')
+        console.log('BeforeDestroy')
       },
       destroyed() {
-        console.log('这里是 Destroyed')
+        console.log('Destroyed')
       },
       beforeUpdate() {
-        console.log('这里是 BeforeUpdate')
+        console.log('BeforeUpdate')
       },
       updated() {
-        console.log('这里是 Updated')
+        console.log('Updated')
       },
       activated() {
-        console.log('这里是 Activated')
+        console.log('Activated')
       }
     })
   </script>

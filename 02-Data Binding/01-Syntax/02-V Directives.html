@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Data Binding - V Directives</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>1. v-html: output real HTML</h3>
+    <p>Using Mustache: {{ rawHtml }}</p>
+    <p>Using v-html directive:
+      <span v-html="rawHtml"></span>
+    </p>
+    <h3>2. v-bind: use inside HTML attributes</h3>
+    <p :id="dynamicId" :class="dynamicClass">bind ID and Class(Open source code and check it)</p>
+    <p :id="'third-' + dynamicId">third + dynamicId</p>
+    <a :href="url">>>>bind tag A href</a>
+    <h3>3. v-if: remove/insert the element based on the truthiness of the value</h3>
+    <p v-if="show">v-if = true</p>
+    <p v-if="hide">v-if = false</p>
+    <h4>4. v-on: listen to DOM events</h4>
+    <a href="javasctipt:;" @click='doSomethig'>click me !</a>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        rawHtml: '<span style="color: red">This should be red</span>',
+        dynamicId: 'tag-p-id',
+        dynamicClass: 'tag-p-class',
+        url: 'https://www.google.com',
+        show: true,
+        hide: false
+      },
+      methods: {
+        doSomethig() {
+          alert('you clicked tag A!')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
