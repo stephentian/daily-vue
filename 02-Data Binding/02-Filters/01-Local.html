@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filter Local</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ message | capitalize }}</p>
+    <p>Filters can be chained</p>
+    <p>{{ message | capitalize | reverse }}</p>
+    <p>Filters can take arguments</p>
+    <p>{{ text | moreMsg(10) }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue',
+        text: 'hello, we are learning Filters'
+      },
+      filters: {
+        capitalize: function (value) {
+          if (!value) {
+            return ''
+          }
+          value = value.toString()
+          return value.charAt(0).toUpperCase() + value.slice(1)
+        },
+        reverse: v => v.split('').reverse().join(''),
+        moreMsg: (value, length) => {
+          return value.substring(0, length)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

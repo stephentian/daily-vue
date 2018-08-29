@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>in mustaches</h3>
+    <p>{{ message | capitalize }}</p>
+    <h3>in v-bind</h3>
+    <p :class="rawId | reverse"></p>
+  </div>
+  <script>
+    // Filters globally should defined before creating the Vue instance ！
+
+    Vue.filter('capitalize', function (value) {
+      if (!value) {
+        return ''
+      }
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    })
+    Vue.filter('reverse', v => v.split('').reverse().join(''))
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue',
+        rawId: 'v-bind-p'
+      }
+    })
+  </script>
+</body>
+
+</html>
