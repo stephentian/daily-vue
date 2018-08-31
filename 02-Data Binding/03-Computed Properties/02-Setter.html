@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Computed Properties Setter</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>firstName: <input v-model="firstName" type="text"></p>
+    <p>lastName: <input v-model="lastName" type="text"></p>
+    <button @click="setName">click me to set fullName = 'Hello Vue'</button>
+    <p>firstName: {{ firstName }}</p>
+    <p>lastName: {{ lastName }}</p>
+    <p>fullName: {{ fullName }}</p>
+    <select v-model="website" name="" id="">
+      <option v-for="(item, index) in urls" :key="index" :value="item.name + ' ' + item.url">{{ item.name }} {{
+        item.url }}</option>
+    </select>
+    <p>website: {{ website }}</p>
+    <p>selectName: {{ selectName }}</p>
+    <p>selectUrl: {{ selectUrl }}</p>
+    <br>
+    <p>price: ￥{{ price }}</p>
+    <p>cents: {{ cents }}</p>
+    <button @click="getCents">Click me to get more cents</button>
+    <button @click="subPrice">Click me to sub Price</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        firstName: 'Stephen',
+        lastName: 'Tian',
+        urls: [{
+            name: 'Google',
+            url: 'http://www.google.com'
+          },
+          {
+            name: 'Baidu',
+            url: 'http://www.baidu.com'
+          },
+          {
+            name: 'Netease',
+            url: 'http://www.google.com'
+          },
+        ],
+        selectName: '',
+        selectUrl: '',
+        cents: 0
+      },
+      computed: {
+        fullName: {
+          get: function () {
+            return this.firstName + ' ' + this.lastName
+          },
+          set: function (newValue) {
+            let names = newValue.split(' ')
+            this.firstName = names[0]
+            this.lastName = names[names.length - 1]
+          }
+        },
+        website: {
+          get: function () {
+            return this.selectName + ' ' + this.selectUrl
+          },
+          set: function (item) {
+            let value = item.split(' ')
+            this.selectName = value[0]
+            this.selectUrl = value[1]
+          }
+        },
+        price: {
+          get: function () {
+            return (this.cents * 0.01).toFixed(2)
+          },
+          set: function (value) {
+            this.cents = value * 100
+          }
+        }
+      },
+      methods: {
+        setName() {
+          this.fullName = 'Hello Vue'
+        },
+        getCents() {
+          this.cents += 100
+        },
+        subPrice() {
+          this.price--
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

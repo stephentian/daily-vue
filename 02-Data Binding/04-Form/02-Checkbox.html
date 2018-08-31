@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Form Checkbox</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="checked" name="" id="checkbox">
+    <label for="checkbox">Click me</label>
+    <p>Checked: {{ checked }}</p>
+    <label for="">Click me<input type="checkbox" value="1" v-model="multiChecked" name="" id=""></label>
+    <label for="">Click me<input type="checkbox" value="2" v-model="multiChecked" name="" id=""></label>
+    <label for="">Click me<input type="checkbox" value="3" v-model="multiChecked" name="" id=""></label>
+    <p>multiChecked: {{ multiChecked.join('、') }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        checked: true,
+        multiChecked: []
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Form Radio</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="radio" value="男1" v-model="picked" id="male">
+    <label for="male">男1</label>
+    <br>
+    <input type="radio" value="女1" v-model="picked" id="female">
+    <label for="female">女1</label>
+    <br>
+    <label for=""><input type="radio" value="男2" v-model="picked" id=""> 男2</label>
+    <br>
+    <label for=""><input type="radio" value="女2" v-model="picked" id=""> 女2</label>
+    <p>Picked: {{ picked }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        picked: ''
+      }
+    })
+  </script>
+</body>
+
+</html>

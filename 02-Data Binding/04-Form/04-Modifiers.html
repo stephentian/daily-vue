@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Form Modifiers</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>.lazy</h3>
+    <p>add lazy modifiers to instead sync after change events</p>
+    <input type="text" v-model.lazy="msg">
+    <p>msg: {{ msg }}</p>
+    <h3>without .lazy</h3>
+    <input v-model="message">
+    <p>message: {{ message }}</p>
+    <h3>.number</h3>
+    <input type="number" v-model.number="age">
+    <p>age: {{ age }}</p>
+    <h3>.trim</h3>
+    <p>input trimmed automatically</p>
+    <input type="text" v-model.trim="news">
+    <p>news: {{ news }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '',
+        message: '',
+        age: null,
+        news: ''
+      }
+    })
+  </script>
+</body>
+
+</html>
