@@ -12,15 +12,30 @@
 <body>
   <div id="app">
     <h3>Binding Class</h3>
-    <div :class="{'active': active, 'unactive': !active">
+    <h4>Object Syntax</h4>
+    <div :class="{'active': active, 'unactive': !active}">
       <p>显示</p>
     </div>
+    <div :class="classObect"></div>
+    <div :class="classComputed">
+      <p>bind to a computed property</p>
+    </div>
+    <h4></h4>
   </div>
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        active: true
+        active: true,
+        classA: 'class-a',
+        classB: 'class-b',
+        classObect: {
+          active: true,
+          'text-danger': false
+        }
+      },
+      computed: {
+
       }
     })
   </script>
