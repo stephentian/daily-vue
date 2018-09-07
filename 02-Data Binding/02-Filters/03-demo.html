@@ -5,11 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title></title>
+  <title>Filters Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 </head>
 
 <body>
-
+  <div id="app">
+    <h3>capitalize 首字母大写</h3>
+    <p>{{ message }}</p>
+    <p>{{ message | capitalize }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'abc'
+      },
+      filters: {
+        capitalize: function (value) {
+          if (!value && value !== 0) return ''
+          value = value.toString()
+          return value.charAt(0).toUpperCase() + value.slice(1)
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>
