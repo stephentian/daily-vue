@@ -14,12 +14,19 @@
     <h3>capitalize 首字母大写</h3>
     <p>{{ message }}</p>
     <p>{{ message | capitalize }}</p>
+    <h3>uppercase 全字母大写</h3>
+    <p>{{ message }}</p>
+    <p>{{ message | uppercase }}</p>
+    <h3>currency 增加美元符号</h3>
+    <p>{{ money }}</p>
+    <p>{{ money | currency }}</p>
   </div>
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        message: 'abc'
+        message: 'abc',
+        money: 12345
       },
       filters: {
         capitalize: function (value) {
