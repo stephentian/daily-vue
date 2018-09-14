@@ -44,7 +44,7 @@
             i = s.length % 3,
             h = i > 0 ? (s.slice(0, i) + (s.length > 3 ? ',' : '')) : '',
             f = '.' + value.toFixed(2).slice(-2)
-          return sign + h + slice(i).replace(/(\d{3}) (?=\d)/g, '$1,') + f
+          return sign + h + s.slice(i).replace(/(\d{3}) (?=\d)/g, '$1,') + f
         },
         pluralize(value, args) {
           return args.length > 1 ?
