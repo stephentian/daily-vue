@@ -46,10 +46,13 @@
             f = '.' + value.toFixed(2).slice(-2)
           return sign + h + s.slice(i).replace(/(\d{3}) (?=\d)/g, '$1,') + f
         },
-        pluralize(value, args) {
+        pluralize: function (value, args) {
           return args.length > 1 ?
             (args[value - 1] || args[args.length - 1]) :
             (args[value - 1] || args[0] + 's')
+        },
+        indexBy: function (result, value, key) {
+          result[key] = value
         }
       }
     })
