@@ -20,13 +20,31 @@
     <h3>currency 增加美元符号</h3>
     <p>{{ money }}</p>
     <p>{{ money | currency }}</p>
+    <p>pluralize 复数形式</p>
+    <p>{{ message | pluralize 'item' }}</p>
+    <ul v-for="(item, index) in li" :key="index">
+      <li>
+        {{ item }} {{ item | pluralize 'item' }}
+      </li>
+    </ul>
+    <ul v-for="(item, index) in man" :key="index">
+      <li>
+        {{ item }} {{ item | pluralize 'item' }}
+      </li>
+    </ul>
   </div>
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
         message: 'abc',
-        money: 12345
+        money: 12345,
+        li: [1, 2, 3],
+        man: {
+          name1: 1,
+          name2: 2,
+          name3: 3
+        }
       },
       filters: {
         capitalize: function (value) {
