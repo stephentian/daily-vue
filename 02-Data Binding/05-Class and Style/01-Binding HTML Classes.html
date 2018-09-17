@@ -24,6 +24,9 @@
     <div :class="[activeClass, errorClass]"></div>
     <div :class="[{ active: isActive }, errorClass]">use the object syntax inside array syntax</div>
     <h3>Binding inline Styles</h3>
+    <h4>Object Syntax</h4>
+    <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+    <div :style="styleObject">Bind a style object</div>
   </div>
   <script>
     var vm = new Vue({
@@ -39,7 +42,13 @@
         isActive: true,
         error: null,
         activeClass: 'active',
-        errorClass: 'text-danger'
+        errorClass: 'text-danger',
+        activeColor: 'red',
+        fontSize: 30,
+        styleObject: {
+          color: 'red',
+          fontSize: '13px'
+        }
       },
       computed: {
         classComputed: function () {
