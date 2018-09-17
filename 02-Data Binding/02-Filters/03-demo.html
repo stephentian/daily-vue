@@ -20,16 +20,16 @@
     <h3>currency 增加美元符号</h3>
     <p>{{ money }}</p>
     <p>{{ money | currency }}</p>
-    <p>pluralize 复数形式</p>
+    <h3>pluralize 复数形式</h3>
     <p>{{ message | pluralize 'item' }}</p>
     <ul v-for="(item, index) in li" :key="index">
       <li>
-        {{ item }} {{ item | pluralize 'item' }}
+        {{ item }} {{ item | pluralize 'item1' }}
       </li>
     </ul>
     <ul v-for="(item, index) in man" :key="index">
       <li>
-        {{ item }} {{ item | pluralize 'item' }}
+        {{ item }} {{ item | pluralize 'item1' }}
       </li>
     </ul>
   </div>

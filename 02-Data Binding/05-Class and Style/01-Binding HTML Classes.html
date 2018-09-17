@@ -20,7 +20,10 @@
     <div :class="classComputed">
       <p>bind to a computed property</p>
     </div>
-    <h4></h4>
+    <h4>Array Syntax</h4>
+    <div :class="[activeClass, errorClass]"></div>
+    <div :class="[{ active: isActive }, errorClass]">use the object syntax inside array syntax</div>
+    <h3>Binding inline Styles</h3>
   </div>
   <script>
     var vm = new Vue({
@@ -32,10 +35,19 @@
         classObect: {
           active: true,
           'text-danger': false
-        }
+        },
+        isActive: true,
+        error: null,
+        activeClass: 'active',
+        errorClass: 'text-danger'
       },
       computed: {
-
+        classComputed: function () {
+          return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          }
+        }
       }
     })
   </script>
