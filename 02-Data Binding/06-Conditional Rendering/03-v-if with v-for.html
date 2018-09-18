@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>V-if with V-for</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3 style="color: red;">When used together with v-if, v-for has a higher priority than v-if</h3>
+    <h3 style="color: red;">当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级</h3>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: 'app',
+      data: {}
+    })
+  </script>
+</body>
+
+</html>

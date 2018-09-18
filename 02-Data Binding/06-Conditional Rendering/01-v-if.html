@@ -11,16 +11,56 @@
 
 <body>
   <div id="app">
-    <h3>v-if</h3>
+    <h4>v-if</h4>
     <p v-if="ok">Yes</p>
     <p v-if="Math.random() > 0.5">Now you see me</p>
     <p v-else>Now you don't</p>
+    <p>A v-else element must immediately follow a v-if or a v-else-if element</p>
+    <p>v-else 必须紧跟 v-if 或者 v-else-if</p>
+    <h4>Controlling Reusable Elements with key</h4>
+    <div v-if="loginType === 'username'">
+      <label>Username</label>
+      <input placeholder="Enter your username">
+    </div>
+    <div v-else>
+      <label>Email</label>
+      <input placeholder="Enter your email address">
+    </div>
+    <button @click="toggleType">Toggle login type</button>
+    <p>use key : </p>
+    <div v-if="loginType1 === 'username'">
+      <label>Username</label>
+      <input placeholder="Enter your username" key="username-input">
+    </div>
+    <div v-else>
+      <label>Email</label>
+      <input placeholder="Enter your email address" key="email-input">
+    </div>
+    <button @click="toggleType1">Toggle login type</button>
   </div>
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        ok: true
+        ok: true,
+        loginType: 'username',
+        loginType1: 'username'
+      },
+      methods: {
+        toggleType() {
+          if (this.loginType === 'username') {
+            this.loginType = 'email'
+          } else {
+            this.loginType = 'username'
+          }
+        },
+        toggleType1() {
+          if (this.loginType1 === 'username') {
+            this.loginType1 = 'email'
+          } else {
+            this.loginType1 = 'username'
+          }
+        }
       }
     })
   </script>
