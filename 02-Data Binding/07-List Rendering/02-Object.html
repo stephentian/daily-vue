@@ -16,6 +16,10 @@
     h3 {
       margin-bottom: 0;
     }
+
+    li {
+      list-style-type: none;
+    }
   </style>
 </head>
 
@@ -41,6 +45,37 @@
     <h3 style="color: red;">When iterating over an object, the order is based on the key enumeration order of
       Object.keys(), which is not guaranteed to be consistent across JavaScript engine implementations.</h3>
     <p style="color: red;">在遍历对象时，是按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下是一致的</p>
+    <h3>Object Change Detection Caveats</h3>
+    <p>对象更改检测注意事项</p>
+    <ul>
+      <li>
+        var vm = new Vue({<br>
+        <ul>
+          <li>data: {</li>
+          <li>userProfile: {</li>
+          <li>name: 'jack'</li>
+          <li>},</li>
+          <li>a: 1</li>
+          <li>}</li>
+        </ul>
+        }) <br>
+        'vm.a' 现在是响应式的 <br>
+        vm.b = 2 <br>
+        'vm.b' 不是响应式的
+      </li>
+      <li>1. Vue.set(object, key, value)</li>
+      <li>2. Vue.set(vm.userProfile, 'age', 27)</li>
+      <li>3. vm.$set(vm.userProfile, 'age', 27)</li>
+      <li>------</li>
+      <li>1. assign a number of new properties to an existing object</li>
+      <li>2. using Object.assign() or _.extend()</li>
+      <li>
+        vm.userProfile = Object.assign({}, vm.userProfile, { <br>
+        age: 27, <br>
+        favoriteColor: 'Vue Green' <br>
+        })
+      </li>
+    </ul>
   </div>
   <script>
     var vm = new Vue({

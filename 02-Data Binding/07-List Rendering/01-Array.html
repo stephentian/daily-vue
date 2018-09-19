@@ -7,10 +7,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Vue List Rendering Array</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <style>
+    h4 {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 0;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
+    <h3>Mapping Array</h3>
     <ul id="example1">
       <li v-for="(item, index) in items" :key="index">
         {{ item.message }}
@@ -18,8 +28,38 @@
       <li v-for="(item, index) in items" :key="index">
         {{ parentMessage }} ：{{ index }} - {{ item.message }}
       </li>
-      <p>You can also use 'of' as the delimiter instead of 'in'</p>
+      <h4>You can also use 'of' as the delimiter instead of 'in'</h4>
       <p>你也可以用 of 替代 in 作为分隔符，因为它是最接近 JavaScript 迭代器的语法</p>
+    </ul>
+    <h3>Array Change Detection</h3>
+    <h4>Mutation Methods</h4>
+    <p>变异方法</p>
+    <ul>
+      <li v-for="(item, index) in methods">
+        {{ item.method }}
+      </li>
+    </ul>
+    <h4>Replacing an Array</h4>
+    <p>替换数组</p>
+    <ul>
+      <li>non-mutation-method 非变异方法</li>
+      <li>不会改变原数组，总是返回一个新数组</li>
+      <li>e.g. filter(), concat(), slice()</li>
+      <li>使用非变异方法时，可以用新数组替换旧数组</li>
+      <li>example1.items = example1.items.filter(function (item) {
+        return item.message.match(/Foo/)
+        })</li>
+    </ul>
+    <h4 style="color: red;">Caveats</h4>
+    <p style="color: red;">注意事项</p>
+    <ul>
+      <li>vm.items[1] = 'x' is NOT reactive</li>
+      <li>vm.items.length = 2 // is NOT reactive</li>
+      <li style="color: red;">you can also use the vm.$set instance method</li>
+      <li>Vue.set(vm.items, indexOfItem, newValue)</li>
+      <li>vm.items.splice(indexOfItem, 1, newValue)</li>
+      <li>vm.$set(vm.items, indexOfItem, newValue)</li>
+      <li>vm.items.splice(newLength)</li>
     </ul>
   </div>
   <script>
@@ -32,6 +72,28 @@
           },
           {
             message: 'Bar'
+          }
+        ],
+        methods: [{
+            method: 'push()'
+          },
+          {
+            method: 'pop()'
+          },
+          {
+            method: 'shift()'
+          },
+          {
+            method: 'unshift()'
+          },
+          {
+            method: 'splice()'
+          },
+          {
+            method: 'sort()'
+          },
+          {
+            method: 'reverse()'
           }
         ]
       }
