@@ -18,6 +18,8 @@
       <li v-for="(item, index) in items" :key="index">
         {{ parentMessage }} ：{{ index }} - {{ item.message }}
       </li>
+      <p>You can also use 'of' as the delimiter instead of 'in'</p>
+      <p>你也可以用 of 替代 in 作为分隔符，因为它是最接近 JavaScript 迭代器的语法</p>
     </ul>
   </div>
   <script>

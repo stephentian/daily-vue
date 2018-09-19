@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <style>
+    p {
+      margin-top: 0;
+      padding: 0;
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul id="v-for-object" class="demo">
+      <h3>use v-for to iterate through the properties of an object</h3>
+      <p>用 v-for 通过一个对象的属性来迭代</p>
+      <li v-for="(value, index) in object" :key="index">
+        {{ value }}
+      </li>
+      <h3>You can also provide a second argument for the key</h3>
+      <p>你也可以提供第二个的参数为键名</p>
+      <li v-for="(value, key, index) in object">
+        {{ key }}: {{ value }}
+      </li>
+      <h3>And another for the index</h3>
+      <p>第三个参数为索引</p>
+      <li v-for="(value, key, index) in object">
+        {{ index }}. {{ key }}: {{ value }}
+      </li>
+    </ul>
+    <h3 style="color: red;">When iterating over an object, the order is based on the key enumeration order of
+      Object.keys(), which is not guaranteed to be consistent across JavaScript engine implementations.</h3>
+    <p style="color: red;">在遍历对象时，是按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下是一致的</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        object: {
+          firstName: 'Stephen',
+          lastName: 'Tian',
+          age: 18
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
