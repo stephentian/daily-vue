@@ -11,8 +11,13 @@
 
 <body>
   <div id="app">
+    <p>Computed</p>
     <ul>
       <li v-for="(n, index) in evenNumbers" :key="index">{{ n }}</li>
+    </ul>
+    <p>Methods</p>
+    <ul>
+      <li v-for="(n, index) in even(numbers)" :key="index">{{ n }}</li>
     </ul>
   </div>
   <script>
@@ -23,7 +28,14 @@
       },
       computed: {
         evenNumbers: function () {
-          return this.numbers.filters(function (number) {
+          return this.numbers.filter(function (number) {
+            return number % 2 === 0
+          })
+        }
+      },
+      methods: {
+        even: function (numbers) {
+          return numbers.filter(function (number) {
             return number % 2 === 0
           })
         }
