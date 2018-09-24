@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Event Listening</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div class="" id="app">
+    <button @click="say('hi')">Say hi</button>
+    <button @click="say('what')">Say what</button>
+    <button @click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        say: function (message) {
+          alert(message)
+        },
+        warn: function (message, event) {
+          if (event) event.preventDefault()
+          alert(message)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

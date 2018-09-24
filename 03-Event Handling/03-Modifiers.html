@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Event Handling Modifiers</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>Event Modifiers</h3>
+    <ul>
+      <li v-for="(item, index) in events" :key="index">
+        <p>{{ item.modifier }}</p>
+        <p>{{ item.Chinese }}</p>
+        <p>{{ item.English }}</p>
+      </li>
+    </ul>
+    <h3>Key Modifiers</h3>
+    <ul>
+      <li v-for="(item, index) in keys" :key="index">
+        <p>{{ item.name }}</p>
+        <p v-if="item.content">{{ item.content }}</p>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        events: [{
+            modifier: '.stop',
+            Chinese: '阻止单击事件继续传播',
+            English: 'the click event\'s propagation will be stopped'
+          },
+          {
+            modifier: '.prevent',
+            Chinese: '提交事件不再重载页面',
+            English: 'the submit event will no longer reload the page'
+          },
+          {
+            modifier: '.capture',
+            Chinese: '添加事件监听器时使用事件捕获模式,即元素自身触发的事件先在此处理，然后才交由内部元素进行处理',
+            English: 'use capture mode when adding the event listener'
+          },
+          {
+            modifier: '.self',
+            Chinese: '只当在 event.target 是当前元素自身时触发处理函数,即事件不是从内部元素触发的',
+            English: 'only trigger handler if event.target is the element itself'
+          },
+          {
+            modifier: '.once',
+            Chinese: '点击事件将只会触发一次',
+            English: 'the click event will be triggered at most once'
+          },
+          {
+            modifier: '.passive',
+            Chinese: '.passive 会告诉浏览器你不想阻止事件的默认行为',
+            English: '.passive communicates to the browser that you don’t want to prevent the event’s default behavior'
+          },
+          {
+            modifier: '不要把 .passive 和 .prevent 一起使用',
+            Chinese: '因为 .prevent 将会被忽略，同时浏览器可能会向你展示一个警告',
+            English: '请记住，.passive 会告诉浏览器你不想阻止事件的默认行为'
+          },
+          {
+            modifier: '使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。',
+            Chinese: 'v-on:click.prevent.self 会阻止所有的点击',
+            English: 'v-on:click.self.prevent 只会阻止对元素自身的点击'
+          }
+        ],
+        keys: [{
+            name: '.enter'
+          },
+          {
+            name: '.tab',
+          },
+          {
+            name: '.delete'
+          },
+          {
+            name: '.esc'
+          },
+          {
+            name: '.space'
+          },
+          {
+            name: '.up'
+          },
+          {
+            name: '.down'
+          },
+          {
+            name: '.left'
+          },
+          {
+            name: '.right'
+          },
+          {
+            name: '通过全局 config.keyCodes 对象自定义按键修饰符别名, 可以使用 `v-on:keyup.f1`',
+            content: 'Vue.config.keyCodes.f1 = 112'
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>
