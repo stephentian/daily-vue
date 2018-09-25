@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Component Basic</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <p>Notice that when clicking on the buttons, each one maintains its own, separate count</p>
+    <p>注意当点击按钮时，每个组件都会各自独立维护它的 count。因为你每用一次组件，就会有一个它的新实例被创建</p>
+    <p style="color: red;">a component’s data option must be a function</p>
+    <p style="color: red;">一个组件的 data 选项必须是一个函数</p>
+  </div>
+  <script>
+    Vue.component('button-counter', {
+      data: function () {
+        return {
+          count: 0
+        }
+      },
+      template: '<button @click="count++">You Clicked me {{ count }} times.</button>'
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {}
+    })
+  </script>
+</body>
+
+</html>
