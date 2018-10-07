@@ -12,6 +12,8 @@
 <body>
   <div id="app">
     <blog-post v-for="(post, index) in posts" :key="post.id" :post="post"></blog-post>
+    <h3>every component must have a single root element.</h3>
+    <h3>每个组件必须只有一个根元素</h3>
   </div>
   <script>
     Vue.component('blog-post', {
