@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue Props</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <blog-post v-for="(post, index) in posts" :key="post.id" :post="post"></blog-post>
+  </div>
+  <script>
+    Vue.component('blog-post', {
+      props: {
+        post: Object
+      },
+      template: `
+              <div class="blog-post">
+                <h3>{{ post.title }}</h3>
+                <div v-html="post.content"></div>
+              </div>
+              `
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        posts: [{
+            id: 1,
+            title: 'My journey with Vue',
+            content: 'xxxxxxxxxxxxxxxxxxxxx'
+          },
+          {
+            id: 2,
+            title: 'Blogging with Vue',
+            content: 'xxxxxxxxxxxxxxxxxxxxx'
+          },
+          {
+            id: 3,
+            title: 'Why Vue is so fun',
+            content: 'xxxxxxxxxxxxxxxxxxxxx'
+          },
+          {
+            id: 4,
+            title: 'My journey',
+            content: 'xxxxxxxxxxxxxxxxxxxxx'
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>
