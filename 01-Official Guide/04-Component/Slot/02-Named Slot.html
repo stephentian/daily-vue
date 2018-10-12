@@ -12,15 +12,27 @@
 <body>
   <div id="app">
     <slot-box>
-
+      <template slot="header">
+        <h1>Header</h1>
+      </template>
+      <h2 slot="top-header">普通元素插槽</h2>
+      <child-box></child-box>
+      <p>默认·插槽</p>
+      <submit-button>Save</submit-button>
+      <template slot="footer">
+        <h2>Footer</h2>
+      </template>
     </slot-box>
   </div>
   <script>
     Vue.component('slot-box', {
       template: `
       <div>
+        <slot name="header"></slot>
+        <slot name="top-header"></slot>
+        <h3>Slot index</h3>
         <slot></slot>
-        <h3>Slot Box</h3>
+        <slot name="footer"></slot>
       </div>
      `
     })
@@ -28,8 +40,16 @@
     Vue.component('child-box', {
       template: `
       <div>
-        <h4>Child Box</h4>
+        <h4>默认插槽子组件</h4>
       </div>
+     `
+    })
+
+    Vue.component('submit-button', {
+      template: `
+      <button>
+        <slot>Submit</slot>
+      </button>
      `
     })
 
