@@ -133,6 +133,14 @@
       template: `<div>Archive component</div>`
     })
 
+    Vue.component('async-example', function (resolve, reject) {
+      setTimeout(function () {
+        resolve({
+          template: `<div>I am async</div>`
+        })
+      }, 1000)
+    })
+
     var vm = new Vue({
       el: '#app',
       data: {
