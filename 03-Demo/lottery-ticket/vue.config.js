@@ -29,6 +29,7 @@ module.export = {
     loaderOptions: {},
 
     // 是否启用 CSS modules for all css / pre-processor files
-    modules: false
+    modules: false,
+    devServer: {}
   }
 };
