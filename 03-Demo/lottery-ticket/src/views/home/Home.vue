@@ -210,29 +210,6 @@
         </section>
       </div>
     </section>
-    <!-- 神单推荐 -->
-    <!-- <section class="m-index-recommend" style="display:none;">
-      <div>
-        <p class="m-index-title"><span class="m-index-title-txt">神单推荐</span><span class="m-index-tilte-more">更多<span></span></span></p>
-        <div class="m-index-recommend-content layoutFlex">
-          <div class="m-index-recommend-l flex1 layoutFlex">
-            <div class="m-index-recommend-img">
-              <img src="https://h5-client.wangzheka.cn/public/upfile/user.jpg" alt="">
-            </div>
-            <div class="m-index-recommend-detail">
-              <div>
-                <p class="recommend-detail1">冲向世界杯<span class="indexRed"><span>近10中8</span></span></p>
-                <p class="recommend-detail2">向你推荐了一个神单</p>
-                <p class="recommend-detail3">已跟投 <span class="indexRed">3125648元</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="m-index-recommend-r layoutFlex">
-            <button class="indexCommonBtn">立即跟单</button>
-          </div>
-        </div>
-      </div>
-    </section> -->
     <!-- 资讯 -->
     <section class="m-index-information">
       <div>
@@ -257,48 +234,6 @@
                 </div>
               </div>
             </li>
-            <!-- <router-link tag="li" :to="{ name: 'fc3dWay'}"><i class="iconfont icon-guize mr5 ft20"></i><span>玩法说明</span></router-link> -->
-
-            <!-- <router-link v-for="(item, index) in index_info"  tag="li" :to="item.url" :key="index">
-              <div class="layoutFlex">
-                <div class="m-index-information-l layoutFlex">
-                  <div class="textEllipsis1">
-                    {{item.title}}
-                  </div>
-                  <p>2018-6-14</p>
-                </div>
-                <div class="m-index-information-r">
-                  <img :src="item.img_url">
-                </div>
-              </div>
-            </router-link> -->
-
-            <!-- <li>
-              <div class="layoutFlex">
-                <div class="m-index-information-l layoutFlex">
-                  <div class="textEllipsis1">
-                    世界杯早班车：揭幕战往绩数据说话,俄罗斯主胜在望。
-                  </div>
-                  <p>2018-6-14</p>
-                </div>
-                <div class="m-index-information-r">
-                  <img src="https://imgsa.baidu.com/news/q%3D100/sign=5561e7ffb13eb13542c7b3bb961fa8cb/d1160924ab18972b016ccbddebcd7b899e510a57.jpg" alt="">
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="layoutFlex">
-                <div class="m-index-information-l layoutFlex">
-                  <div class="textEllipsis1">
-                    世界杯早班车：揭幕战往绩数据说话,俄罗斯主胜在望。
-                  </div>
-                  <p>2018-6-14</p>
-                </div>
-                <div class="m-index-information-r">
-                  <img src="https://imgsa.baidu.com/news/q%3D100/sign=5561e7ffb13eb13542c7b3bb961fa8cb/d1160924ab18972b016ccbddebcd7b899e510a57.jpg" alt="">
-                </div>
-              </div>
-            </li> -->
           </ul>
         </div>
       </div>
