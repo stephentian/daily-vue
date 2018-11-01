@@ -296,27 +296,26 @@
     <bottom-tips ref="bTips"></bottom-tips>
     <togive188></togive188>
     <openBrower></openBrower>
-    <!-- <popup></popup> -->
     <popup></popup>
   </div>
 </template>
 <script>
-import loading from "@/components/loading";
-import "swiper/dist/css/swiper.css";
-import router from "@/router/index.js";
-import store from "@/store/index.js";
-import bottomTab from "@/components/bottom-tab/bottomTab";
-import bottomTips from "@/components/bottom-tips/bottomTips";
-import bottomService from "@/components/bottom-service/bottomService";
-import togive188 from "@/components/togive188/index";
-import popup from "@/components/popup/popup";
-import openBrower from "@/components/open-brower/index";
-import { mapState, mapGetters } from "vuex";
+import loading from '@/components/loading'
+import 'swiper/dist/css/swiper.css'
+import router from '@/router/index.js'
+import store from '@/store/index.js'
+import bottomTab from '@/components/bottom-tab/bottomTab'
+import bottomTips from '@/components/bottom-tips/bottomTips'
+import bottomService from '@/components/bottom-service/bottomService'
+import togive188 from '@/components/togive188/index'
+import popup from '@/components/popup/popup'
+import openBrower from '@/components/open-brower/index'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
-    "v-loading": loading,
+    'v-loading': loading,
     bottomTab,
     bottomTips,
     bottomService,
@@ -324,11 +323,11 @@ export default {
     popup,
     openBrower
   },
-  data() {
+  data () {
     return {
       swiperOption: {
         pagination: {
-          el: ".swiper-pagination"
+          el: '.swiper-pagination'
         },
         slidesPerView: 1,
         autoplay: {
@@ -339,7 +338,7 @@ export default {
       },
       swiperOption1: {
         pagination: {
-          el: ".swiper-pagination"
+          el: '.swiper-pagination'
         },
         slidesPerView: 1,
         autoplay: false,
@@ -352,7 +351,7 @@ export default {
       blues_selected: [],
       reds_selected_temp: [],
       blues_selected_temp: [],
-      stopTime: "",
+      stopTime: '',
       isDigClicked: false,
       isClicked2: false,
       teamSelect: {
@@ -372,72 +371,72 @@ export default {
       selectPayIndex: 0,
       classList: [],
       randomFlag: true
-    };
+    }
   },
   watch: {
-    quick_bet_data(c, o) {
-      let t = c.ssq.stop_time.split(" ")[0];
-      let time = c.ssq.stop_time.split(" ")[1];
-      let time1 = time.slice(0, time.lastIndexOf(":"));
-      let n = new Date(t).getDay();
+    quick_bet_data (c, o) {
+      let t = c.ssq.stop_time.split(' ')[0]
+      let time = c.ssq.stop_time.split(' ')[1]
+      let time1 = time.slice(0, time.lastIndexOf(':'))
+      let n = new Date(t).getDay()
 
-      if (t === new Date().toJSON().split("T")[0]) {
-        this.stopTime = "今天" + time1;
+      if (t === new Date().toJSON().split('T')[0]) {
+        this.stopTime = '今天' + time1
       } else {
         switch (String(n)) {
-          case "0":
-            this.stopTime = "周日" + time1;
-            break;
-          case "1":
-            this.stopTime = "周一" + time1;
-            break;
-          case "2":
-            this.stopTime = "周二" + time1;
-            break;
-          case "3":
-            this.stopTime = "周三" + time1;
-            break;
-          case "4":
-            this.stopTime = "周四" + time1;
-            break;
-          case "5":
-            this.stopTime = "周五" + time1;
-            break;
-          case "6":
-            this.stopTime = "周六" + time1;
-            break;
+          case '0':
+            this.stopTime = '周日' + time1
+            break
+          case '1':
+            this.stopTime = '周一' + time1
+            break
+          case '2':
+            this.stopTime = '周二' + time1
+            break
+          case '3':
+            this.stopTime = '周三' + time1
+            break
+          case '4':
+            this.stopTime = '周四' + time1
+            break
+          case '5':
+            this.stopTime = '周五' + time1
+            break
+          case '6':
+            this.stopTime = '周六' + time1
+            break
         }
       }
-      this.options = c.jczq_bet_money.split(",").map((o, i) => {
-        return o;
-      });
-      this.totalData = c;
+      this.options = c.jczq_bet_money.split(',').map((o, i) => {
+        return o
+      })
+      this.totalData = c
     }
   },
   computed: {
     // 跳转地址添加时间戳
-    timestamp() {
-      let getTimestamp = new Date().getTime();
-      return "?timestamp=" + getTimestamp;
+    timestamp () {
+      let getTimestamp = new Date().getTime()
+      return '?timestamp=' + getTimestamp
     },
     // 取出数据排序
-    sortLotteryList() {
-      let res = this.lotteryList;
-      let lastRes = res.sort((a, b) => a.show_index - b.show_index);
-      let result = [];
+    sortLotteryList () {
+      let res = this.lotteryList
+      let lastRes = res.sort((a, b) => a.show_index - b.show_index)
+      let result = []
       for (let i = 0, len = lastRes.length; i < len; i += 8) {
-        result.push(lastRes.slice(i, i + 8));
+        result.push(lastRes.slice(i, i + 8))
       }
-      return result;
+      return result
     },
-    nickName() {
+    nickName () {
       if (localStorage.user_info || localStorage.user_info !== undefined) {
-        let user_info = JSON.parse(localStorage.user_info);
-        return user_info.nick_name;
+        let user_info = JSON.parse(localStorage.user_info)
+        return user_info.nick_name
       } else if (this.userInfo.nick_name) {
-        return this.userInfo.nick_name;
+        return this.userInfo.nick_name
       } else {
-        return false;
+        return false
       }
     },
     ...mapState({
@@ -445,213 +444,213 @@ export default {
       bannerList: state => state.query.bannerList,
       bonusList: state => {
         if (state.query.bonusList.length > 0) {
-          return state.query.bonusList;
+          return state.query.bonusList
         } else {
           return [
             {
-              phone_number: "",
-              lottery_name: "",
-              bonus_money: ""
+              phone_number: '',
+              lottery_name: '',
+              bonus_money: ''
             }
-          ];
+          ]
         }
       },
       notifyList: state => {
         if (state.query.notifyList.length > 0) {
-          return state.query.notifyList;
+          return state.query.notifyList
         } else {
           return [
             {
-              phone_number: "",
-              lottery_name: "",
-              bonus_money: ""
+              phone_number: '',
+              lottery_name: '',
+              bonus_money: ''
             }
-          ];
+          ]
         }
       },
       quick_bet_data: state => state.query.quick_bet_data,
       pay_switch_data: state => {
         let object1 = state.query.pay_switch_data.filter((o, i) => {
-          return o.status === 0;
-        });
-        return object1;
+          return o.status === 0
+        })
+        return object1
       },
       isLogined: state => {
-        if (localStorage.getItem("token")) {
-          return true;
+        if (localStorage.getItem('token')) {
+          return true
         } else {
-          state.login.isLogined = false;
-          return false;
+          state.login.isLogined = false
+          return false
         }
       },
       userInfo: state => state.login.user_info,
       index_info: state => state.query.index_info
     }),
-    ...mapGetters(["loading", "lotteryList"]),
+    ...mapGetters(['loading', 'lotteryList']),
     ...mapGetters({
-      coupon_face: "coupon_face",
-      coupon_id: "coupon_id"
+      coupon_face: 'coupon_face',
+      coupon_id: 'coupon_id'
     }),
-    top() {
-      return -this.activeIndex * 3.5 + "rem";
+    top () {
+      return -this.activeIndex * 3.5 + 'rem'
     },
-    transition() {
-      return this.activeIndex === 0 ? "none" : "top 0.5s";
+    transition () {
+      return this.activeIndex === 0 ? 'none' : 'top 0.5s'
     }
   },
-  mounted() {
+  mounted () {
     let list1 = this.pay_switch_data.map((o, i) => {
-      return o.priority;
-    });
-    this.selectPayIndex = list1.indexOf(Math.min(...list1));
+      return o.priority
+    })
+    this.selectPayIndex = list1.indexOf(Math.min(...list1))
 
     setInterval(_ => {
-      this.notifyList.push(this.notifyList[0]);
-      this.activeIndex += 1;
-    }, 3000);
+      this.notifyList.push(this.notifyList[0])
+      this.activeIndex += 1
+    }, 3000)
     setTimeout(_ => {
       setInterval(_ => {
-        this.notifyList.splice(0, 1);
-        this.activeIndex = 0;
-      }, 3000);
-    }, 500);
+        this.notifyList.splice(0, 1)
+        this.activeIndex = 0
+      }, 3000)
+    }, 500)
     // 取出platform 原来用法是处理ios与android
     if (this.urlParse(document.location.href).platform) {
-      let p = this.urlParse(document.location.href).platform;
+      let p = this.urlParse(document.location.href).platform
       if (!isNaN(p)) {
-        let z = parseInt(p);
+        let z = parseInt(p)
         if (z > 3 || z < 1) {
-          localStorage.setItem("platform1", 1);
+          localStorage.setItem('platform1', 1)
         } else {
-          localStorage.setItem("platform1", z);
+          localStorage.setItem('platform1', z)
         }
         if (z === 3) {
-          localStorage.setItem("iosWebview", true);
+          localStorage.setItem('iosWebview', true)
         }
       } else {
-        localStorage.setItem("platform1", 1);
+        localStorage.setItem('platform1', 1)
       }
     } else {
-      localStorage.setItem("platform1", 1);
+      localStorage.setItem('platform1', 1)
     }
   },
   filters: {
-    payIcon(v) {
-      let s = "";
+    payIcon (v) {
+      let s = ''
       switch (v) {
         case 0:
-          s = "icon-wechat";
-          break;
+          s = 'icon-wechat'
+          break
         case 1:
-          s = "icon-alipay";
-          break;
+          s = 'icon-alipay'
+          break
         case 3:
-          s = "icon-wechat";
-          break;
+          s = 'icon-wechat'
+          break
         case 4:
-          s = "icon-QQzhifu1";
-          break;
+          s = 'icon-QQzhifu1'
+          break
       }
-      return s;
+      return s
     },
-    payName(v) {
-      let s = "";
+    payName (v) {
+      let s = ''
       switch (v) {
         case 0:
-          s = "微信支付";
-          break;
+          s = '微信支付'
+          break
         case 1:
-          s = "支付宝支付";
-          break;
+          s = '支付宝支付'
+          break
         case 3:
-          s = "微信支付";
-          break;
+          s = '微信支付'
+          break
         case 4:
-          s = "QQ支付";
-          break;
+          s = 'QQ支付'
+          break
       }
-      return s;
+      return s
     }
   },
   methods: {
-    rechargeType(i, s) {
-      this.selectPayIndex = i;
+    rechargeType (i, s) {
+      this.selectPayIndex = i
     },
     // 去往公告
-    homeNotice(s, s1) {
+    homeNotice (s, s1) {
       if (s1) {
-        localStorage.setItem("noticeTheme", s);
-        localStorage.setItem("noticeText", s1);
-        router.push("/comNotice");
+        localStorage.setItem('noticeTheme', s)
+        localStorage.setItem('noticeText', s1)
+        router.push('/comNotice')
       }
     },
     // 未开放彩票弹框
-    LotteryStatusPrompt: function(o) {
-      this.centerDialogVisible1 = true;
+    LotteryStatusPrompt: function (o) {
+      this.centerDialogVisible1 = true
     },
     // 下拉框数值输入改变
-    numberChange(v) {
-      let v1 = parseInt(v);
+    numberChange (v) {
+      let v1 = parseInt(v)
       if (isNaN(v1) || v1 < 1) {
-        this.value = 1;
+        this.value = 1
       } else if (v1 > 8888) {
-        this.value = 8888;
+        this.value = 8888
       }
-      this.forecastBonus();
+      this.forecastBonus()
     },
     // 下拉框数值选中改变
-    selectNumberFnc(o) {
-      this.value = o;
-      this.DownUp = false;
-      this.forecastBonus();
+    selectNumberFnc (o) {
+      this.value = o
+      this.DownUp = false
+      this.forecastBonus()
     },
     // 选择倍数箭头点击事件
-    arrowClick() {
-      this.DownUp = !this.DownUp;
+    arrowClick () {
+      this.DownUp = !this.DownUp
     },
     // 预测奖金
-    forecastBonus() {
-      let oddSelect = [];
-      this.selectNumber = [];
-      let odds = this.totalData.jczq.rates;
+    forecastBonus () {
+      let oddSelect = []
+      this.selectNumber = []
+      let odds = this.totalData.jczq.rates
 
       if (this.teamSelect.awayWin) {
-        oddSelect.push(odds["0"]);
-        this.selectNumber.push("0");
+        oddSelect.push(odds['0'])
+        this.selectNumber.push('0')
       }
       if (this.teamSelect.flat) {
-        oddSelect.push(odds["1"]);
-        this.selectNumber.push("1");
+        oddSelect.push(odds['1'])
+        this.selectNumber.push('1')
       }
       if (this.teamSelect.homeWin) {
-        oddSelect.push(odds["3"]);
-        this.selectNumber.push("3");
+        oddSelect.push(odds['3'])
+        this.selectNumber.push('3')
       }
 
       if (Math.max(...oddSelect) === Math.min(...oddSelect)) {
-        this.foreBonus = (Math.max(...oddSelect) * this.value * 2).toFixed(2);
+        this.foreBonus = (Math.max(...oddSelect) * this.value * 2).toFixed(2)
       } else {
         this.foreBonus =
           (Math.min(...oddSelect) * this.value * 2).toFixed(2) +
-          "~" +
-          (Math.max(...oddSelect) * this.value * 2).toFixed(2);
+          '~' +
+          (Math.max(...oddSelect) * this.value * 2).toFixed(2)
       }
       if (oddSelect.length === 0) {
-        this.foreBonus = 0;
-        return false;
+        this.foreBonus = 0
+        return false
       } else {
-        if (!localStorage.getItem("user_id")) {
-          return false;
+        if (!localStorage.getItem('user_id')) {
+          return false
         } else {
           // this.$store.dispatch('getUserInfo', {'user_id': localStorage.user_id})
         }
-        this.total_money = this.value * 2 * oddSelect.length;
-        let minimum = this.total_money * 100;
-        this.$store.dispatch("getBetTotalMoney", minimum);
+        this.total_money = this.value * 2 * oddSelect.length
+        let minimum = this.total_money * 100
+        this.$store.dispatch('getBetTotalMoney', minimum)
         this.$store
-          .dispatch("getCoupon", {
+          .dispatch('getCoupon', {
             user_id: localStorage.user_id,
-            alias: "FT",
+            alias: 'FT',
             coupon_status: 0,
             minimum: minimum
           })
@@ -661,261 +660,255 @@ export default {
             // this.popShow = true
           })
           .catch(err => {
-            this.$refs.bTips.bottompopTips("获取优惠券信息出错:" + err);
-            this.isClicked = false;
-          });
+            this.$refs.bTips.bottompopTips('获取优惠券信息出错:' + err)
+            this.isClicked = false
+          })
       }
     },
-    urlParse(urlString) {
-      let url = urlString;
-      let obj = {};
-      let reg = /[?&][^?&]+=[^?&]+/g;
-      let arr = url.match(reg);
+    urlParse (urlString) {
+      let url = urlString
+      let obj = {}
+      let reg = /[?&][^?&]+=[^?&]+/g
+      let arr = url.match(reg)
       if (arr) {
         arr.forEach(item => {
-          let tempArr = item.substring(1).split("=");
-          let key = decodeURIComponent(tempArr[0]);
-          obj[key] = decodeURIComponent(tempArr[1]);
-        });
+          let tempArr = item.substring(1).split('=')
+          let key = decodeURIComponent(tempArr[0])
+          obj[key] = decodeURIComponent(tempArr[1])
+        })
       }
-      return obj;
+      return obj
     },
     // 竞彩足球队伍选择
-    teamSelectFnc(i) {
+    teamSelectFnc (i) {
       switch (i) {
         case 0:
-          this.teamSelect.homeWin = !this.teamSelect.homeWin;
-          break;
+          this.teamSelect.homeWin = !this.teamSelect.homeWin
+          break
         case 1:
-          this.teamSelect.flat = !this.teamSelect.flat;
-          break;
+          this.teamSelect.flat = !this.teamSelect.flat
+          break
         case 2:
-          this.teamSelect.awayWin = !this.teamSelect.awayWin;
-          break;
+          this.teamSelect.awayWin = !this.teamSelect.awayWin
+          break
       }
-      this.forecastBonus();
+      this.forecastBonus()
     },
-    toBanner(url) {
+    toBanner (url) {
       try {
-        window.webkit.messageHandlers.iosBannerIndex.postMessage(url);
+        window.webkit.messageHandlers.iosBannerIndex.postMessage(url)
       } catch (e) {
-        window.top.location.href = url;
+        window.top.location.href = url
       } finally {
-        window.top.location.href = url;
+        window.top.location.href = url
       }
     },
-    showDownload() {
+    showDownload () {
       if (localStorage.token) {
-        if (this.urlParse(document.location.href).platform === "3") {
-          this.show_download = false;
+        if (this.urlParse(document.location.href).platform === '3') {
+          this.show_download = false
         } else {
-          this.show_download = true;
+          this.show_download = true
         }
       } else {
-        this.show_download = false;
+        this.show_download = false
       }
     },
     // 双色球随机数字
-    randomBalls() {
-      if (!this.randomFlag) return false;
-      this.randomFlag = false;
+    randomBalls () {
+      if (!this.randomFlag) return false
+      this.randomFlag = false
 
       // this.reds_selected = []
       // this.blues_selected = []
-      let r = [];
-      let b = [];
+      let r = []
+      let b = []
       while (r.length < 6) {
-        let s = (parseInt(Math.random() * 33) + 1).toString();
-        let ss = s.toString().length === 1 ? "0" + s : s;
+        let s = (parseInt(Math.random() * 33) + 1).toString()
+        let ss = s.toString().length === 1 ? '0' + s : s
         if (r.indexOf(ss) === -1) {
-          r.push(ss);
+          r.push(ss)
         }
       }
-      let s1 = parseInt(Math.random() * 16) + 1;
+      let s1 = parseInt(Math.random() * 16) + 1
       if (s1.toString().length === 1) {
-        s1 = "0" + s1;
+        s1 = '0' + s1
       }
 
-      b.push(s1);
+      b.push(s1)
 
-      let y = 0;
+      let y = 0
       let inter = setInterval(() => {
-        this.$set(this.classList, y, true);
+        this.$set(this.classList, y, true)
         if (y === 7) {
-          clearInterval(inter);
+          clearInterval(inter)
         } else {
           if (y === 6) {
-            this.blues_selected[0] = b[0];
+            this.blues_selected[0] = b[0]
           } else {
-            this.reds_selected[y] = r[y];
+            this.reds_selected[y] = r[y]
           }
-          y++;
+          y++
         }
-      }, 100);
+      }, 100)
 
       setTimeout(() => {
-        this.$set(this, "classList", [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]);
-        this.randomFlag = true;
-      }, 1000);
+        this.$set(this, 'classList', [false, false, false, false, false, false])
+        this.randomFlag = true
+      }, 1000)
     },
-    Coms: function() {
+    Coms: function () {
       // 普通投注号
-      const arr1 = this.reds_selected;
-      const arr2 = this.blues_selected;
-      const arr3 = arr1.concat(arr2);
-      const c = arr1[arr1.length - 1] + "#" + arr2[0];
+      const arr1 = this.reds_selected
+      const arr2 = this.blues_selected
+      const arr3 = arr1.concat(arr2)
+      const c = arr1[arr1.length - 1] + '#' + arr2[0]
 
-      arr3.splice(arr1.length - 1, 2, c);
-      this.ante_code = arr3;
+      arr3.splice(arr1.length - 1, 2, c)
+      this.ante_code = arr3
 
       const arr4 = arr3
-        .join(",")
-        .replace(/[^0-9]/gi, ",")
-        .split(",");
-      this.reds_selected_temp = arr4.splice(0, arr1.length);
-      this.blues_selected_temp = arr4;
+        .join(',')
+        .replace(/[^0-9]/gi, ',')
+        .split(',')
+      this.reds_selected_temp = arr4.splice(0, arr1.length)
+      this.blues_selected_temp = arr4
     },
-    popShowFnc() {
-      if (!localStorage.getItem("user_id")) {
-        router.push("/comlogin");
+    popShowFnc () {
+      if (!localStorage.getItem('user_id')) {
+        router.push('/comlogin')
       } else if (!Object.values(this.teamSelect).includes(true)) {
-        this.$refs.bTips.bottompopTips("请选择投注项");
-        return false;
+        this.$refs.bTips.bottompopTips('请选择投注项')
+        return false
       } else {
         this.$store
-          .dispatch("getUserInfo", { user_id: localStorage.user_id })
+          .dispatch('getUserInfo', { user_id: localStorage.user_id })
           .then(() => {
-            this.isBalance();
-          });
+            this.isBalance()
+          })
       }
     },
-    cancelSubmit() {
-      this.popShow = false;
+    cancelSubmit () {
+      this.popShow = false
     },
     // 余额是否足够
-    isBalance() {
+    isBalance () {
       let c =
         this.total_money * 100 >= this.balance + this.coupon_face
           ? this.total_money * 100 - this.coupon_face - this.balance
-          : 0;
+          : 0
       if (Number(c) > 300000) {
-        this.centerDialogVisible = true;
+        this.centerDialogVisible = true
       } else {
-        this.jczqSubmit();
+        this.jczqSubmit()
       }
     },
     // 双色球购买
-    ssqSubmit: function() {
+    ssqSubmit: function () {
       if (this.isDigClicked) {
-        this.$refs.bTips.bottompopTips("已经被点击了，请勿重复点击");
+        this.$refs.bTips.bottompopTips('已经被点击了，请勿重复点击')
       } else {
         let beforeDone = () =>
           new Promise((resolve, reject) => {
-            this.isDigClicked = true;
-            this.Coms();
-            const ssqObj = {};
+            this.isDigClicked = true
+            this.Coms()
+            const ssqObj = {}
             if (
               this.reds_selected.length > 6 ||
               this.blues_selected.length > 1
             ) {
-              ssqObj.play_type = "102";
-              ssqObj.ante_info = "复式投注";
+              ssqObj.play_type = '102'
+              ssqObj.ante_info = '复式投注'
             } else {
-              ssqObj.play_type = "101";
-              ssqObj.ante_info = "普通投注";
+              ssqObj.play_type = '101'
+              ssqObj.ante_info = '普通投注'
             }
-            ssqObj.lottery_alias = "ssq";
-            ssqObj.lottery_period = this.totalData.ssq.lottery_period;
-            ssqObj.reds_selected = this.reds_selected_temp;
-            ssqObj.blues_selected = this.blues_selected_temp;
-            ssqObj.ante_code = this.ante_code;
-            ssqObj.count = 1;
-            ssqObj.single_money = 2;
+            ssqObj.lottery_alias = 'ssq'
+            ssqObj.lottery_period = this.totalData.ssq.lottery_period
+            ssqObj.reds_selected = this.reds_selected_temp
+            ssqObj.blues_selected = this.blues_selected_temp
+            ssqObj.ante_code = this.ante_code
+            ssqObj.count = 1
+            ssqObj.single_money = 2
             if (localStorage.token) {
-              store.commit("Ssq", ssqObj);
+              store.commit('Ssq', ssqObj)
             }
-            resolve();
-          });
+            resolve()
+          })
         beforeDone()
           .then(() => {
-            router.push("/ssqcart");
+            router.push('/ssqcart')
           })
           .catch(err => {
-            this.$refs.bTips.bottompopTips(`submit函数出错${err}`);
-            this.isDigClicked = false;
-          });
+            this.$refs.bTips.bottompopTips(`submit函数出错${err}`)
+            this.isDigClicked = false
+          })
       }
     },
     // 竞彩足球购买
-    jczqSubmit: function() {
-      let order_info = {};
+    jczqSubmit: function () {
+      let order_info = {}
       order_info.bet_codes =
-        this.totalData.jczq.match_number + "*" + this.selectNumber.join(",");
-      order_info.bet_multi = Number(this.value);
-      order_info.bet_money = this.total_money * 100;
-      order_info.bet_type = "110000000";
+        this.totalData.jczq.match_number + '*' + this.selectNumber.join(',')
+      order_info.bet_multi = Number(this.value)
+      order_info.bet_money = this.total_money * 100
+      order_info.bet_type = '110000000'
 
       let p1 = {
         user_id: localStorage.user_id,
-        game: "FT",
-        lottery_id: "FT01",
+        game: 'FT',
+        lottery_id: 'FT01',
         coupon_id: this.coupon_id,
         order_info: JSON.stringify(order_info)
-      };
+      }
 
       let p2 = {
         total_money: this.total_money,
         balance: this.balance,
         coupon_face: this.coupon_face,
-        period: "",
-        name: "ft",
-        chineseName: "竞彩足球-胜平负",
-        lottery_id: "FT01"
-      };
-      store.commit("PAY_DATA", [p1, p2, "ft"]);
-      this.$router.push("/paydetail");
+        period: '',
+        name: 'ft',
+        chineseName: '竞彩足球-胜平负',
+        lottery_id: 'FT01'
+      }
+      store.commit('PAY_DATA', [p1, p2, 'ft'])
+      this.$router.push('/paydetail')
     },
-    linkTo(s) {
+    linkTo (s) {
       try {
-        window.webkit.messageHandlers.iosBannerIndex.postMessage(s);
+        window.webkit.messageHandlers.iosBannerIndex.postMessage(s)
       } catch (e) {
-        let u = navigator.userAgent;
-        if (u.includes("cdd_h5")) {
+        let u = navigator.userAgent
+        if (u.includes('cdd_h5')) {
           window.location.href =
-            "cdd://callbacUrl/cddAction?itemAction=2&url=" +
-            encodeURIComponent(s);
+            'cdd://callbacUrl/cddAction?itemAction=2&url=' +
+            encodeURIComponent(s)
         } else {
-          window.location.href = s;
+          window.location.href = s
         }
       }
     }
   },
-  created() {
-    this.randomBalls();
-    this.$store.dispatch("getBannerList");
-    this.$store.dispatch("getNotifyList");
-    this.$store.dispatch("getQuick_bet");
-    this.$store.dispatch("getLotteryList");
+  created () {
+    this.randomBalls()
+    this.$store.dispatch('getBannerList')
+    this.$store.dispatch('getNotifyList')
+    this.$store.dispatch('getQuick_bet')
+    this.$store.dispatch('getLotteryList')
     // 打开页面 拉取悬浮框数据
-    this.$store.dispatch("getFloatData");
-    this.$store.dispatch("getIndex_info", {
+    this.$store.dispatch('getFloatData')
+    this.$store.dispatch('getIndex_info', {
       limit: 3,
       page: 1,
-      type: ""
-    });
+      type: ''
+    })
     this.isIosWebview =
-      String(localStorage.getItem("iosWebview")) === "true" || false;
+      String(localStorage.getItem('iosWebview')) === 'true' || false
     // this.$store.dispatch('getPay_swtich')
   }
-};
+}
 </script>
+
 <style lang="scss" scoped>
 .selectMount {
   height: 2.96rem;
