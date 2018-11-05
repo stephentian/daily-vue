@@ -4,11 +4,11 @@ module.export = {
   // 若部署在 https://www.foobar.com/my-app/
   // 设置 baseUrl: ''my-app'
   // !!! 多页面情况下, 避免使用相对路径
-  baseUrl: "/",
+  baseUrl: '/',
 
   // 输出文件目录
   // 默认 'dist'
-  outputDir: "dist",
+  outputDir: 'dist',
 
   // multi-page 下的配置
   // 默认 undefined
@@ -32,4 +32,4 @@ module.export = {
     modules: false,
     devServer: {}
   }
-};
+}
