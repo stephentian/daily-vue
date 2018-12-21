@@ -6,10 +6,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>购物车示例</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  </link>
 </head>
 
 <body>
-
+  <div id="app" v-cloak>
+    <template v-if="list.length">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>商品名称</th>
+            <th>商品价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in list" :key="item.id">
+            <td>{{ index + 1 }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+              <button :disabled="item.count === 1" @click="handleReduce(index)">-</button>
+              {{ item.count }}
+              <button @click="handleAdd(index)">+</button>
+            </td>
+            <td>
+              <button @click="handleRemove(index)">
+                清除物品
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>总价： ￥ {{ totalPrice }}</div>
+    </template>
+    <div v-else>购物车为空</div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: [{
+            id: 1,
+            name: 'iPhone 7',
+            price: 5000,
+            count: 10
+          },
+          {
+            id: 2,
+            name: 'iPad Pro',
+            price: 5000,
+            count: 10
+          },
+          {
+            id: 3,
+            name: 'MacBook Air',
+            price: 10000,
+            count: 5
+          },
+          {
+            id: 4,
+            name: 'MacBook Pro',
+            price: 15000,
+            count: 2
+          }
+        ]
+      },
+      computed: {
+        totalPrice: function () {
+          var total = 0
+          for (var i = 0; i < this.list.length; i++) {
+            var item = this.list[i]
+            total += item.price * item.count
+          }
+          // 千分位分隔符
+          return total.toString().replace(/\B(?=(\d{3})+$)/g, ',')
+        }
+      },
+      methods: {
+        handleReduce(index) {
+          if (this.list[index].count === 1) return
+          this.list[index].count--
+        },
+        handleAdd(index) {
+          this.list[index].count++
+        },
+        handleRemove(index) {
+          this.list.splice(index, 1)
+        }
+      },
+    })
+  </script>
 </body>
 
 </html>
