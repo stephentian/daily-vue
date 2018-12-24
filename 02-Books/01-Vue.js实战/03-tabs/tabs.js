@@ -14,6 +14,7 @@ Vue.component('tabs', {
     </div> \
   </div>',
   props: {
+    // v-model 传过来的
     value: {
       type: [String, Number]
     }
@@ -22,7 +23,8 @@ Vue.component('tabs', {
     return {
       // 不能修改 value, 复制一份自己维护
       currentValue: this.value,
-      navList: []
+      navList: [],
+      i: 0
     }
   },
   methods: {
@@ -68,7 +70,10 @@ Vue.component('tabs', {
       this.updateStatus()
     },
     updateStatus() {
+      this.i++
+      console.log(this.i)
       var tabs = this.getTabs()
+      console.log(tabs)
       var _this = this
       tabs.forEach(function (tab) {
         // 当 tab name 和 currentValue 相同时, tab.show 为 true
