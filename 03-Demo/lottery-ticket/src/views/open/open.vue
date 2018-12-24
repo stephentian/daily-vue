@@ -34,14 +34,14 @@
       </ul>
     </div>
     <section class="g-open-lists">
-      <aside v-for="(item, index) in periodInfo" :key="index" class="m-open-list" v-if="type.includes(item.lottery_alias)">
+      <aside v-for="(item, index) in periodInfo" :key="'period-' + index" class="m-open-list" v-if="type.includes(item.lottery_alias)">
         <router-link :to="{ path: '/open/' + item.lottery_alias + 'result' }">
           <div class="m-open-list-info">
             <h3><a class="lottery_name">{{ item.lottery_name }}</a><span class="ml15">第{{ item.lottery_period }}期 {{ item.official_stop_time | DateTime }}</span></h3>
             <div class="balls mt5">
-              <em class="tac mr5 fl red-ball" v-for="(ball, i) in item.redBalls" :key="i">{{ ball }}</em>
+              <em class="tac mr5 fl red-ball" v-for="(ball, i) in item.redBalls" :key="'redball-' + i">{{ ball }}</em>
               <!-- <em class="tac mr5 fl blue-ball" v-if="item.blueBalls.length > 0" v-for="(ball, i) in item.blueBalls" :key="i">{{ ball }}</em> -->
-              <em class="tac mr5 fl blue-ball" v-for="(ball, i) in item.blueBalls" :key="i">{{ ball }}</em>
+              <em class="tac mr5 fl blue-ball" v-for="(ball, i) in item.blueBalls" :key="'bluebal-' + i">{{ ball }}</em>
               <!-- <em class="tac mr5 fl" :class="[redBall ? 'red-ball' : 'blue-ball']" v-for="(item, index) in Balls(item.lottery_alias,item.bonus_code)" :value="index" :index="index">{{ item }}-{{ item.split(",").length > index }}</em> -->
               <!-- <em class="tac mr5 fl" :class="[redBall ? 'red-ball' : 'blue-ball']" v-for="(items, indexs) in item.bonus_code">{{ items }}</em> -->
               <!-- <em class="tac mr5 fl" v-for="(items, indexs) in item.bonus_code" :class="['tac','mr5','fl',indexs>5?'blue-ball':'red-ball']" >{{ items }}</em> -->
@@ -85,7 +85,7 @@ import togive188 from "@/components/togive188/index";
 import { mapState } from "vuex";
 
 export default {
-  data() {
+  data () {
     return {
       redBall: true,
       // 已将全部数据搬至 store 文件夹；按后端接口命名文件
@@ -108,7 +108,7 @@ export default {
     })
   },
   filters: {
-    DateTime(strDate) {
+    DateTime (strDate) {
       let date = new Date(strDate.replace(/-/g, "/"));
       let y = date.getFullYear();
       let m = date.getMonth() + 1;
@@ -118,15 +118,15 @@ export default {
       return y + "-" + m + "-" + d;
     }
   },
-  mounted() {},
-  created() {
+  mounted () { },
+  created () {
     // 拉取数字彩结果
     this.$store.dispatch("getPeriodInfo");
     // 足球竞彩结果
     this.$store.dispatch("getMatchResult", this.football_info);
   },
   methods: {
-    DateTime(strDate) {
+    DateTime (strDate) {
       let date = new Date(strDate);
       let y = date.getFullYear();
       let m = date.getMonth() + 1;
@@ -135,13 +135,13 @@ export default {
       d = d < 10 ? "0" + d : d;
       return y + "-" + m + "-" + d;
     },
-    getHomeTeam(team) {
+    getHomeTeam (team) {
       return team.split(":")[0];
     },
-    getRoadTeam(team) {
+    getRoadTeam (team) {
       return team.split(":")[1];
     },
-    typeFnc(i) {
+    typeFnc (i) {
       this.typeIndex = i;
       switch (i) {
         case 0:
