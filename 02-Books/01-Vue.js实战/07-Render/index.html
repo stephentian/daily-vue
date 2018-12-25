@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Render 函数</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <anchor :level="2" title="特性">特性</anchor>
+  </div>
+  <script>
+    // 第一版本
+    // Vue.component('anchor', {
+    //   name: 'anchor',
+    //   template: `
+    //   <div>
+    //     <h1 v-if="level == 1">
+    //       <a :href="'#' + title">
+    //         <slot></slot>
+    //       </a>
+    //     </h1>
+    //     <h2 v-if="level == 2">
+    //       <a :href="'#' + title">
+    //         <slot></slot>
+    //       </a>
+    //     </h2>
+    //     <h3 v-if="level == 3">
+    //       <a :href="'#' + title">
+    //         <slot></slot>
+    //       </a>
+    //     </h3>
+    //   </div>
+    //   `,
+    //   props: {
+    //     level: {
+    //       type: Number,
+    //       required: true
+    //     },
+    //     title: {
+    //       type: String,
+    //       default: ''
+    //     }
+    //   }
+    // })
+
+    // 第一版本没有错误
+    // 缺点：代码冗长，组件的 template 大量代码重复。只是 head 元素不同。
+    // 其实 level 可以控制 head 标签， 比如： h + this.level
+    // 在 Render 函数中我们可以这样
+    var app = new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>
