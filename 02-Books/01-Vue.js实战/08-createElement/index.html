@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>createElement 用法</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ele></ele>
+  </div>
+  <script>
+    // Vue.component('ele', {
+    //   template: `
+    // <div id="element"
+    //   :class="{show: show}"
+    //   @click="handleClick">文本内容</div>
+    // `,
+    //   data: function () {
+    //     return {
+    //       show: true
+    //     }
+    //   },
+    //   methods: {
+    //     handleClick: function () {
+    //       console.log('Clicked')
+    //     }
+    //   },
+    // })
+
+    // 使用 Render 函数
+    Vue.component('ele', {
+      render: function (createElement) {
+        return createElement(
+          'div', {
+            // 动态绑定 class
+            class: {
+              'show': this.show
+            },
+            // 普通 html 属性
+            attrs: {
+              id: 'element'
+            },
+            // 给 div 绑定 click 事件
+            on: {
+              click: this.handleClick
+            }
+          },
+          'Render 文本内容'
+        )
+      },
+      data: function () {
+        return {
+          show: true
+        }
+      },
+      methods: {
+        handleClick: function () {
+          console.log('Clicked')
+        }
+      },
+    })
+
+    var app = new Vue({
+      el: '#app'
+    })
+
+    // 这个例子来看， template 的写法明显比 Render 写法可读性要高，而且简洁
+    // 所以要在合适的场景使用 Render 函数
+  </script>
+</body>
+
+</html>
