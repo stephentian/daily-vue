@@ -52,6 +52,35 @@
     // 缺点：代码冗长，组件的 template 大量代码重复。只是 head 元素不同。
     // 其实 level 可以控制 head 标签， 比如： h + this.level
     // 在 Render 函数中我们可以这样
+    Vue.component('anchor', {
+      props: {
+        level: {
+          type: Number,
+          required: true
+        },
+        title: {
+          type: String,
+          default: ''
+        }
+      },
+      render: function (createElement) {
+        return createElement(
+          'h' + this.level,
+          [
+            createElement(
+              'a', {
+                domProps: {
+                  href: '#' + this.level
+                }
+              },
+              this.$slots.default
+            )
+          ]
+        )
+      }
+    })
+    // Render 通过 createElement 参数来创建 Virtual Dom，结构精简很多
+    // Render 神奇的地方就在 createElement 里
     var app = new Vue({
       el: '#app'
     })
