@@ -12,5 +12,11 @@ Vue.component('vTable', {
         return []
       }
     }
+  },
+  data: function () {
+    return {
+      currentColimns: [],
+      currentData: []
+    }
   }
 })
