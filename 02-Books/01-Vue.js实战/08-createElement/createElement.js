@@ -25,18 +25,18 @@ createElement(
 )
 
 // e.g.
-render: function (createElement) {
-  return createElement(
-    'div', {
-      class: {
-        'foo': true
-      }
-    },
-    [
-      createElement('h1', 'Hello world'),
-      createElement('span', '你好')
-    ]
-  )
-}
+// render: function (createElement) {
+//   return createElement(
+//     'div', {
+//       class: {
+//         'foo': true
+//       }
+//     },
+//     [
+//       createElement('h1', 'Hello world'),
+//       createElement('span', '你好')
+//     ]
+//   )
+// }
 
 // 第二个参数（可选）
