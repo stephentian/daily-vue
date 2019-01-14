@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Layout from '@/views/layout'
-// import Main from '@/views/main'
 
 Vue.use(Router)
 
@@ -11,10 +10,11 @@ export default new Router({
   routes: [{
     path: '/',
     component: Layout,
+    redirect: '/home',
     children: [{
-      path: 'main',
-      name: 'main',
-      component: () => import('@/views/main')
+      path: 'home',
+      name: 'home',
+      component: () => import('@/views/home')
     }, {
       path: 'category',
       name: 'category',

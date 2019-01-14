@@ -4,12 +4,18 @@ import router from './router'
 
 import {
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  Button,
+  Row,
+  Col
 } from 'vant'
 
 Vue
   .use(Tabbar)
   .use(TabbarItem)
+  .use(Button)
+  .use(Row)
+  .use(Col)
 
 Vue.config.productionTip = false
 
