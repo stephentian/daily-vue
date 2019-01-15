@@ -1,13 +1,14 @@
 <template>
   <div>
     <div class="search-bar">
-      <van-row>
+      <van-row type="flex"
+               align="center"
+               justify="space-around">
         <van-col :span="3">
           <img :src="locationIcon"
                width="80%"
                calss
-               class="location-icon"
-               alt="">
+               class="location-icon">
         </van-col>
         <van-col :span="16">
           <input type="text"
@@ -87,17 +88,15 @@ export default {
 <style lang="css"  scoped>
 .search-bar {
   height: 2.2rem;
-  background-color: rgb(47, 45, 44);
-  /* line-height: 2.2rem; */
+  background-color: rgba(47, 45, 44, 0.9);
 }
 
 .search-input {
-  width: 100%;
+  width: 94%;
   height: 1.4rem;
   border: 0;
   border-bottom: 1px solid #fff;
-  background-color: rgba(47, 45, 44, 0.1);
   border-radius: 5px;
-  vertical-align: middle;
+  padding-left: 0.25rem;
 }
 </style>
