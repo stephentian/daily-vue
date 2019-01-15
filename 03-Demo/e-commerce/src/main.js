@@ -7,7 +7,10 @@ import {
   TabbarItem,
   Button,
   Row,
-  Col
+  Col,
+  Swipe,
+  SwipeItem,
+  List
 } from 'vant'
 
 Vue
@@ -16,6 +19,9 @@ Vue
   .use(Button)
   .use(Row)
   .use(Col)
+  .use(Swipe)
+  .use(SwipeItem)
+  .use(List)
 
 Vue.config.productionTip = false
 
