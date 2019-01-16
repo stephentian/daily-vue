@@ -23,7 +23,7 @@
       <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(item, index) in bannerArr"
                         :key="index">
-          <img :src="item.imageUrl"
+          <img v-lazy="item.imageUrl"
                width="100%">
         </van-swipe-item>
       </van-swipe>
