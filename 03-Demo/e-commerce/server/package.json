@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "hotbuy service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "stephentian",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.6.2"
+  }
+}
