@@ -9,6 +9,7 @@
   "author": "stephentian",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.6.2"
+    "koa": "^2.6.2",
+    "mongoose": "^5.4.5"
   }
 }
