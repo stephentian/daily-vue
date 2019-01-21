@@ -4,6 +4,7 @@ const {
   connect,
   initSchemas
 } = require('./database/init.js')
+
 const mongoose = require('mongoose')
 // const bodyParser = require('koa-bodyparser')
 // const cors = require('koa2-cors')
@@ -28,7 +29,17 @@ const mongoose = require('mongoose')
 ;
 (async () => {
   await connect()
-  initSchemas
+  initSchemas()
+  const User = mongoose.model('User')
+  let oneUser = new User({
+    username: 'stephen',
+    password: '11111'
+  })
+  oneUser.save().then(() => {
+    console.log('save success!')
+  })
+  let users = await User.findOne({}).exec()
+  console.log('users:', users)
 })()
 
 app.use(async (ctx) => {
