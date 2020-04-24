@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "koa": "^2.6.2",
-    "mongoose": "^5.4.5"
+    "mongoose": "^5.7.5"
   },
   "devDependencies": {
     "bcryptjs": "^2.4.3"
