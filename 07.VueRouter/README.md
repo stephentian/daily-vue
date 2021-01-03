@@ -130,11 +130,61 @@ class VueRouter {
 ```
 
 ```js
+// router-view
 export default {
     render(h) {
         const { routeMap, current } = this.$router
         const coponent = routeMap[current].component
         return h(component)
+    }
+}
+```
+
+### 解决嵌套问题
+
+1. 深度标记
+
+2. 判断匹配路由
+
+```js
+// router-view
+export default {
+    render(h) {
+        this.$vnode.data.routerView = true
+
+        let deepth = 0
+        let parent = this.$parent
+        while(parent) {
+            const vnodeData = parent.$vnode && parent.$vnode.data
+            if (vnodeData) {
+                if (vnodeData.routerView) {
+                    deepth++
+                }
+            }
+            parent = this.$parent
+        }
+
+        const { routeMap, current } = this.$router
+        const coponent = routeMap[current].component
+        return h(component)
+    }
+}
+```
+
+```js
+// router
+
+class VueRouter {
+    constructor(options) {
+        const current = window.location.hash.slice(1) || '/'
+
+        // 监听 hashchange
+        window.addEventListener('hashchange', this.onHashChange.bind(this))
+        window.addEventListener('load', this.onHashChange.bing(this))
+    }
+
+    onHashChange() {
+        this.current = window.location.hash.slice(1)
     }
 }
 ```
